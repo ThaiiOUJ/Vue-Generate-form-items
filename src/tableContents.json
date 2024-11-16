@@ -1,14 +1,17 @@
-[
+{
+  "Table_Contents": [
     {
-        "num": "",
-        "product": "",
-        "Material": "",
-        "Technology": "",
-        "Modulus": "",
-        "quantity": "",
-        "unit_price": "",
-        "Amount": "",
-        "delivery_date": "",
-        "Remark": ""
+      "num": "1",
+      "product": "齿条",
+      "Material": "20x20",
+      "Technology": "直白研磨",
+      "Modulus": "2",
+      "quantity": "10",
+      "unit_price": "10",
+      "Amount": "1000",
+      "delivery_date": "2024-10-11",
+      "Remark": "按图纸生成",
+      "id": "1"
     }
-]
+  ]
+}

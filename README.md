@@ -48,6 +48,11 @@ Ah Nan
 - 11-15
   - 晚上23:20分左右,优化完了销售合同表单问题,原来表单代码很长,今天想到可以先定义一个数据,后用v-for去遍历循环会方便很多减少了代码,也变得整洁了.
   - 添加内容只写了一个`input`没有写多的
+- 11-16
+  - 晚上23:10分,重新优化了销售合同部分的表格内容,如图
+  - ![2024-11-16-23:10](https://gitee.com/ActonT/pic-go_img/raw/master/image-20241116230959936.png)
+  - 添加了两个按钮,能删除和添加行,
+  - 通过json-server,进行了挂载数据地址为`http://localhost:3000/Table_Contents`
 
 
 ------
@@ -78,5 +83,7 @@ Ah Nan
 ![image-20241116103222743](https://gitee.com/ActonT/pic-go_img/raw/master/image-20241116103222743.png)
 
 ![image-20241116103244412](https://gitee.com/ActonT/pic-go_img/raw/master/image-20241116103244412.png)
+
+
 
 以上是 Vue 项目开发日记的整理内容，后续会根据进度更新更多记录！ 🚀

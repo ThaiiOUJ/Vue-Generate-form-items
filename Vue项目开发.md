@@ -559,3 +559,163 @@ import arrow from '@/assets/img/arrow.png';
 > ```
 >
 > 表单这里绑定一个`<form @submit.prevent="addTable_Contents">`点击事件,在底部添加一个按钮,该按钮绑定了`submit`
+
+
+
+---
+
+## 重新写销售合同表格
+
+```html
+<!-- 表格部分 -->
+<form @submit.prevent="handleSubmi">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-1xl text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" v-for="(col, index) in ProductHeader" :key="index"
+                        class="px-2 py-2 text-center w-30">
+                        {{ col }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(row, rowIndex) in state.Table_Contents" :key="row.id">
+                    <!-- 序号 -->
+                    <td class="px-4 py-2">{{ row.num }}</td>
+
+                    <!-- 产品规格 -->
+                    <td>
+                        <input v-model="row.product" class="border px-2 py-1 w-full"
+                               placeholder="产品规格" />
+                    </td>
+
+                    <!-- 材质 -->
+                    <td>
+                        <input v-model="row.Material" class="border px-2 py-1 w-full"
+                               placeholder="材质" />
+                    </td>
+
+                    <!-- 工艺 -->
+                    <td>
+                        <input v-model="row.Technology" class="border px-2 py-1 w-full"
+                               placeholder="工艺" />
+                    </td>
+
+                    <!-- 模数 -->
+                    <td>
+                        <input v-model="row.Modulus" class="border px-2 py-1 w-full" placeholder="模数" />
+                    </td>
+
+                    <!-- 数量 -->
+                    <td>
+                        <input v-model="row.quantity" type="number" class="border px-2 py-1 w-full"
+                               placeholder="数量" />
+                    </td>
+
+                    <!-- 单价含税 -->
+                    <td>
+                        <input v-model="row.unit_price" type="number" class="border px-2 py-1 w-full"
+                               placeholder="单价" />
+                    </td>
+
+                    <!-- 金额 -->
+                    <td class="px-4 py-2 text-center">
+                        <input v-model="row.Amount" type="number" class="border px-2 py-1 w-full"
+                               placeholder="单价" />
+                    </td>
+
+                    <!-- 交货日期 -->
+                    <td>
+                        <input v-model="row.delivery_date" type="date"
+                               class="border px-2 py-1 w-full" />
+                    </td>
+
+                    <!-- 备注 -->
+                    <td>
+                        <input v-model="row.Remark" class="border px-2 py-1 w-full" placeholder="备注" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button @click="addTable_Contents" class="mt-4 bg-blue-400 text-white px-4 py-2 rounded">
+            添加新行
+        </button>
+
+        <button @click="deleteRow()" class="mt-4 bg-red-400 text-white px-4 py-2 rounded">
+            删除
+        </button>
+        <!-- <button @click="handleSubmi(row)" class="bg-green-500 text-white px-4 py-2 rounded">提交</button> -->
+    </div>
+</form>
+```
+
+> 表格的行不用v-for了,因为我调不出来,太麻烦了,
+
+## json - server
+
+```js
+import { ref, reactive, onMounted } from 'vue';
+import axios from 'axios';
+
+
+
+// const Table_Contents = reactive([]);
+const state = reactive({
+    Table_Contents: []
+})
+
+// 表头
+const ProductHeader = ref([
+    '序号',
+    '产品规格',
+    '材质',
+    '工艺',
+    '模数',
+    '数量',
+    '单价含税(13%)',
+    '金额',
+    '交货日期',
+    '备注'
+]);
+
+// 添加新行
+const addTable_Contents = () => {
+    state.Table_Contents.push({
+        num: (state.Table_Contents.length + 1).toString(),
+        product: '',
+        Material: '',
+        Technology: '',
+        Modulus: '',
+        quantity: '',
+        unit_price: '',
+        Amount: '',
+        delivery_date: '',
+        Remark: '',
+        id: Date.now().toString()
+    });
+};
+
+// 删除行
+const deleteRow = () => {
+    if (state.Table_Contents.length > 0) {
+        state.Table_Contents.splice(state.Table_Contents.length - 1, 1);
+    } else {
+        alert('没有多余的数据可以删除')
+    }
+};
+
+//获取挂载数据
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/Table_Contents')
+        state.Table_Contents = response.data;
+    } catch (error) {
+        console.error('Error fetching Table_Contents', error);
+
+    }
+})
+```
+
+> 添加了上面的功能
