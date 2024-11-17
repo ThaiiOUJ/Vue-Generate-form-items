@@ -1,17 +1,39 @@
 {
-  "Table_Contents": [
+  "SalesContractInterfaces": [
     {
-      "num": "1",
-      "product": "齿条",
-      "Material": "20x20",
-      "Technology": "直白研磨",
-      "Modulus": "2",
-      "quantity": "10",
-      "unit_price": "10",
-      "Amount": "1000",
-      "delivery_date": "2024-10-11",
-      "Remark": "按图纸生成",
-      "id": "1"
+      "id": "2736",
+      "OrderNumber": "NM2024111720010100",
+      "SigningDate": "2024-11-17",
+      "company": {
+        "CompanyName": "深圳市牛马程序有限公司",
+        "LegalRepresentative": "阿萨大大大",
+        "Address": "虚拟地址深圳市",
+        "Telephone": "123123123",
+        "Bank": "啊是大多数",
+        "Account": "12312312"
+      },
+      "company2": {
+        "CompanyName2": "深圳市高级传动科技有限公司",
+        "LegalRepresentative2": "王总",
+        "Address2": "深圳市龙岗区三号一路",
+        "Telephone2": "123123434",
+        "Bank2": "万事达国际银行",
+        "Account2": "12312343889789"
+      },
+      "Table_Contents": [
+        {
+          "product": "同步轮",
+          "Material": "20",
+          "Technology": "111",
+          "Modulus": "23",
+          "quantity": 10,
+          "unit_price": 10,
+          "Amount": 1000,
+          "delivery_date": "2024-11-28",
+          "Remark": "按图纸生产",
+          "num": "1"
+        }
+      ]
     }
   ]
 }
